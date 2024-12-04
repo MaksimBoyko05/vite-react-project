@@ -1,18 +1,21 @@
-import React, { useState } from 'react'
-import './App.css'
+import React from 'react'
+import { BrowserRouter, Routes, Route, Link } from 'react-router-dom'
+import Home from './components/Home'
+import About from './components/About'
 
-interface AppProps {}
-
-const App: React.FC<AppProps> = () => {
-  const [count, setCount] = useState<number>(0)
-
+const App: React.FC = () => {
   return (
-    <div>
-      <h1>Лічильник: {count}</h1>
-      <button onClick={() => setCount(count + 1)}>
-        Натисни мене!
-      </button>
-    </div>
+    <BrowserRouter>
+      <nav>
+        <Link to="/">Головна</Link>
+        <Link to="/about">Про нас</Link>
+      </nav>
+
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/about" element={<About />} />
+      </Routes>
+    </BrowserRouter>
   )
 }
 
